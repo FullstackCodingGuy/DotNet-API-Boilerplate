@@ -6,12 +6,17 @@ This project is a boilerplate for building .NET API applications with various fe
 
 ## Features
 
-- Authentication using JWT Bearer tokens
-- Rate limiting to prevent API abuse
-- CORS policies for secure cross-origin requests
-- Response caching and compression
-- Logging with Serilog
-- Health check endpoint
+- [x] Authentication using JWT Bearer tokens
+- [x] Rate limiting to prevent API abuse
+- [x] CORS policies for secure cross-origin requests
+- [x] Response caching and compression
+- [x] Logging with Serilog
+- [x] Health check endpoint
+- [ ] Vault Integration
+- [ ] Application Resiliency
+- [ ] Performance Metrics
+- [ ] Dockerization
+- [ ] Stack Deployment Template
 
 ## Getting Started
 
@@ -24,7 +29,7 @@ This project is a boilerplate for building .NET API applications with various fe
 
 1. Clone the repository:
     ```sh
-    git clone https://github.com/yourusername/netapi-boilerplate.git
+    git clone https://github.com/FullstackCodingGuy/netapi-boilerplate.git
     cd netapi-boilerplate
     ```
 
