@@ -13,10 +13,12 @@ This project is a boilerplate for building .NET API applications with various fe
 - [x] Logging with Serilog
 - [x] Health check endpoint
 - [ ] Vault Integration
+- [ ] MQ Integration
 - [ ] Application Resiliency
 - [ ] Performance Metrics
 - [ ] Dockerization
-- [ ] Stack Deployment Template
+- [ ] CloudFormation - Stack Deployment Template
+- [ ] Github Action
 
 ## Getting Started
 
