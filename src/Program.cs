@@ -78,6 +78,7 @@ builder.Services.AddMemoryCache(); // Enable in-memory caching
 
 builder.Services.AddCors(options =>
 {
+    // To allow prod specific origins
     options.AddPolicy("AllowSpecificOrigins", policy =>
     {
         policy.WithOrigins("https://yourfrontend.com") // Replace with your frontend URL
@@ -86,6 +87,7 @@ builder.Services.AddCors(options =>
               .AllowCredentials(); // If authentication cookies/tokens are needed
     });
 
+    // To allow unrestricted access (only for non prod testing)
     options.AddPolicy("AllowAll", policy =>
     {
         policy.AllowAnyOrigin() // Use only for testing; NOT recommended for production

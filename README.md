@@ -12,6 +12,7 @@ This project is a boilerplate for building .NET API applications with various fe
 - [x] Response caching and compression
 - [x] Logging with Serilog
 - [x] Health check endpoint
+- [x] Middlewares
 - [ ] Vault Integration
 - [ ] MQ Integration
 - [ ] Application Resiliency

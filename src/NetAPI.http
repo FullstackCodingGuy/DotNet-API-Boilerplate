@@ -1,6 +1,6 @@
-@NetAPI_HostAddress = http://localhost:5035
+@NetAPI_HostAddress = http://localhost:7000
 
-GET {{NetAPI_HostAddress}}/weatherforecast/
+GET {{NetAPI_HostAddress}}/health/
 Accept: application/json
 
 ###
