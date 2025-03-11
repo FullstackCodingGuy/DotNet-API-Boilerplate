@@ -1,4 +1,4 @@
-# netapi-boilerplate
+# DotNet API Boilerplate
 
 ## Overview
 
