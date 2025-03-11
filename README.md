@@ -77,6 +77,8 @@ Log.Logger = new LoggerConfiguration()
     .CreateLogger();
 
 builder.Host.UseSerilog();
+```
+
 
 Additional Configuration
 - Authentication: Configure the JWT Bearer options in Program.cs to match your Keycloak settings.
