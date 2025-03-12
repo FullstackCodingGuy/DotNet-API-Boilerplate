@@ -19,6 +19,7 @@ This project is a boilerplate for building .NET API applications with various fe
 - [x] [Middlewares](https://github.com/FullstackCodingGuy/dotnetapi-boilerplate/tree/main/src/Middlewares)
 - [ ] Entity Framework
 - [ ] Serilog
+- [ ] FluentValidation
 - [ ] Vault Integration
 - [ ] MQ Integration
 - [ ] Application Resiliency
@@ -53,16 +54,21 @@ This project is a boilerplate for building .NET API applications with various fe
     dotnet restore
     ```
 
-3. Update the `appsettings.json` and `serilog.json` files with your configuration.
+3. Update the `appsettings.json` and `appsettings.Development.json` files with your configuration.
 
 ### Running the Application
 
 1. Build and run the application:
     ```sh
     dotnet run
+
+    or
+
+    dotnet run --launch-profile "https"
+
     ```
 
-2. The application will be available at `http://localhost:5035` (or the configured URL).
+2. The application will be available at `http://localhost:7000` and `https://localhost:7001` (or the configured URL).
 
 ### Health Check Endpoint
 
