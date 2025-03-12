@@ -5,6 +5,7 @@ using Serilog;
 using NetAPI.Features.Posts;
 using Microsoft.OpenApi.Models;
 using NetAPI.Common.Api;
+using NetAPI.Features;
 
 [ExcludeFromCodeCoverage]
 public static class WebAppExtensions
@@ -61,8 +62,8 @@ public static class WebAppExtensions
 
     private static void AddEndpoints(this WebApplication app)
     {
-        app.MapGet("/", () => "Hello, World!");
-        // app.MapGet("/health", () => "Healthy");
+        app.MapGet("/", () => "DotNet API Boilerplate");
+        app.MapGet("/health", () => "Healthy");
 
         // app.MapGet("/secure", () => "You are authenticated!")
         //     .RequireAuthorization(); // Protect this endpoint
@@ -70,26 +71,8 @@ public static class WebAppExtensions
         // app.MapGet("/admin", () => "Welcome Admin!")
         //     .RequireAuthorization(policy => policy.RequireRole("admin"));
 
-        app.MapPostEndpoints();
+        app.MapFeatureEndpoints();
 
-    }
-
-    private static void MapPostEndpoints(this IEndpointRouteBuilder app)
-    {
-        var endpoint = app.MapPublicGroup("/tasks");
-        endpoint.MapEndpoint<GetPosts>();
-    }
-
-    private static RouteGroupBuilder MapPublicGroup(this IEndpointRouteBuilder app, string? prefix = null)
-    {
-        return app.MapGroup(prefix ?? string.Empty)
-            .AllowAnonymous();
-    }
-
-    private static RouteGroupBuilder MapPrivateGroup(this IEndpointRouteBuilder app, string? prefix = null)
-    {
-        return app.MapGroup(prefix ?? string.Empty)
-            .RequireAuthorization();
     }
 
     private static void AppendHeaders(this WebApplication app)
