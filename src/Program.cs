@@ -7,26 +7,18 @@ using Serilog;
 using Microsoft.Extensions.Configuration;
 
 
-var builder = WebApplication
-                .CreateBuilder(args)
-                .ConfigureApplicationBuilder();
-
-var IsDevelopment = builder.Environment.IsDevelopment();
-
-var configuration = builder.Configuration;
-
-var app = builder
-        .Build()
-        .ConfigureApplication();
-
 try
 {
+        var builder = WebApplication.CreateBuilder(args).ConfigureApplicationBuilder();
 
-        // Console.WriteLine(app.Environment.IsDevelopment().ToString());
-        Log.Information($"Starting host in {builder.Environment.EnvironmentName} mode");
-        // Console.WriteLine($"Running in Dev={isDev} mode");
+        var app = builder.Build();
+
+        app.ConfigureApplication();
+
+        // Log.Information($"Application is running in {builder.Environment.EnvironmentName} mode.");
 
         app.Run();
+        
         return 0;
 }
 catch (Exception ex)
