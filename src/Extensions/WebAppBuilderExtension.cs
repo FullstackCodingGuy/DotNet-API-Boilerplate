@@ -21,6 +21,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using NetAPI.Infrastructure;
 
 [ExcludeFromCodeCoverage]
 public static class WebAppBuilderExtension
@@ -177,7 +178,7 @@ public static class WebAppBuilderExtension
 
         #endregion
 
-
+        builder.Services.AddInfra();
 
         builder.Services.AddControllers()
             .AddJsonOptions(options =>

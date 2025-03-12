@@ -2,6 +2,9 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Microsoft.AspNetCore.Builder;
 using Serilog;
+using NetAPI.Features.Posts;
+using Microsoft.OpenApi.Models;
+using NetAPI.Common.Api;
 
 [ExcludeFromCodeCoverage]
 public static class WebAppExtensions
@@ -17,8 +20,6 @@ public static class WebAppExtensions
         // Apply Authentication Middleware
         app.UseAuthentication();
         app.UseAuthorization();
-
-        // -----------------------------------------------------------------------------------------
 
         if (IsDevelopment)
         {
@@ -40,14 +41,59 @@ public static class WebAppExtensions
         // use rate limiter
         app.UseRateLimiter();
 
-        // Ensure Database is Created
-        // using (var scope = app.Services.CreateScope())
-        // {
-        //     var dbContext = scope.ServiceProvider.GetRequiredService<ExpenseDbContext>();
-        //     dbContext.Database.Migrate();
-        // }
+        app.EnsureDatabaseCreated().Wait();
+
+        app.AppendHeaders();
+
+        app.AddEndpoints();
+
+        return app;
+    }
 
 
+    private static async Task EnsureDatabaseCreated(this WebApplication app)
+    {
+        // using var scope = app.Services.CreateScope();
+        // var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        // await db.Database.MigrateAsync();
+        await Task.CompletedTask;
+    }
+
+    private static void AddEndpoints(this WebApplication app)
+    {
+        app.MapGet("/", () => "Hello, World!");
+        // app.MapGet("/health", () => "Healthy");
+
+        // app.MapGet("/secure", () => "You are authenticated!")
+        //     .RequireAuthorization(); // Protect this endpoint
+
+        // app.MapGet("/admin", () => "Welcome Admin!")
+        //     .RequireAuthorization(policy => policy.RequireRole("admin"));
+
+        app.MapPostEndpoints();
+
+    }
+
+    private static void MapPostEndpoints(this IEndpointRouteBuilder app)
+    {
+        var endpoint = app.MapPublicGroup("/tasks");
+        endpoint.MapEndpoint<GetPosts>();
+    }
+
+    private static RouteGroupBuilder MapPublicGroup(this IEndpointRouteBuilder app, string? prefix = null)
+    {
+        return app.MapGroup(prefix ?? string.Empty)
+            .AllowAnonymous();
+    }
+
+    private static RouteGroupBuilder MapPrivateGroup(this IEndpointRouteBuilder app, string? prefix = null)
+    {
+        return app.MapGroup(prefix ?? string.Empty)
+            .RequireAuthorization();
+    }
+
+    private static void AppendHeaders(this WebApplication app)
+    {
         // Prevent Cross-Site Scripting (XSS) & Clickjacking
         // Use Content Security Policy (CSP) and X-Frame-Options:
 
@@ -58,28 +104,5 @@ public static class WebAppExtensions
             context.Response.Headers.Append("Content-Security-Policy", "default-src 'self'");
             await next();
         });
-
-
-        app.MapGet("/", () => "Hello, World!");
-        app.MapGet("/health", () => "Healthy");
-
-        app.MapGet("/secure", () => "You are authenticated!")
-            .RequireAuthorization(); // Protect this endpoint
-
-        app.MapGet("/admin", () => "Welcome Admin!")
-            .RequireAuthorization(policy => policy.RequireRole("admin"));
-
-
-
-        #region MinimalApi
-
-        // _ = app.MapVersionEndpoints();
-        // _ = app.MapAuthorEndpoints();
-        // _ = app.MapMovieEndpoints();
-        // _ = app.MapReviewEndpoints();
-
-        #endregion MinimalApi
-
-        return app;
     }
 }
