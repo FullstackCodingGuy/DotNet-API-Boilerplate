@@ -6,6 +6,7 @@ This project is a boilerplate for building .NET API applications with various fe
 
 ## Features
 
+- [x] Swagger
 - [x] Authentication using JWT Bearer tokens
 - [x] Rate limiting to prevent API abuse
 - [x] CORS policies for secure cross-origin requests

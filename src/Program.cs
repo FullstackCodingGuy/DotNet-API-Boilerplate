@@ -20,6 +20,7 @@ using Microsoft.IdentityModel.Tokens;
 
 var builder = WebApplication.CreateBuilder(args);
 
+var IsDevelopment = builder.Environment.IsDevelopment();
 
 // ✅ Ensure correct access to configuration
 var configuration = builder.Configuration;
@@ -153,8 +154,11 @@ builder.Services.AddControllers()
         options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.Preserve;
     });
 
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
+if (IsDevelopment)
+{
+    builder.Services.AddEndpointsApiExplorer();
+    builder.Services.AddSwaggerGen();
+}
 
 // Enable Compression to reduce payload size
 builder.Services.AddResponseCompression(options =>
@@ -171,16 +175,17 @@ app.UseSerilogRequestLogging();
 
 // Console.WriteLine(app.Environment.IsDevelopment().ToString());
 Console.WriteLine($"Running in {builder.Environment.EnvironmentName} mode");
+// Console.WriteLine($"Running in Dev={isDev} mode");
 
 // -----------------------------------------------------------------------------------------
 // Apply Authentication Middleware
 
-app.UseAuthentication(); 
+app.UseAuthentication();
 app.UseAuthorization();
 
 // -----------------------------------------------------------------------------------------
 
-var IsDevelopment = app.Environment.IsDevelopment();
+// var IsDevelopment = app.Environment.IsDevelopment();
 
 if (IsDevelopment)
 {
