@@ -1,4 +1,4 @@
-@NetAPI_HostAddress = http://localhost:7000
+@NetAPI_HostAddress = http://localhost:8000
 
 GET {{NetAPI_HostAddress}}/health/
 Accept: application/json

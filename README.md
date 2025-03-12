@@ -76,15 +76,7 @@ dotnet dev-certs https --trust
 
 ```
 
-1.2 Running the container with cert
-
-```
-docker pull mcr.microsoft.com/dotnet/samples:aspnetapp
-docker run --rm -it -p 8000:80 -p 8001:443 -e ASPNETCORE_URLS="https://+;http://+" -e ASPNETCORE_HTTPS_PORTS=8001 -e ASPNETCORE_Kestrel__Certificates__Default__Password="mypassword234" -e ASPNETCORE_Kestrel__Certificates__Default__Path=/https/dotnetapi-boilerplate.pfx -v ${HOME}/.aspnet/https:/https/ 
-
-```
-
-2. The application will be available at `http://localhost:7000` and `https://localhost:7001` (or the configured URL).
+2. The application will be available at `http://localhost:8000` and `https://localhost:8001` (or the configured URL).
 
 ### Health Check Endpoint
 
