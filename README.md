@@ -6,21 +6,32 @@ This project is a boilerplate for building .NET API applications with various fe
 
 ## Features
 
+- [ ] [Vertical Slicing Architecture](https://github.com/FullstackCodingGuy/Developer-Fundamentals/wiki/Architecture-%E2%80%90-Vertical-Slicing-Architecture)
 - [x] Swagger
+- [x] Minimal API
 - [x] Authentication using JWT Bearer tokens
+- [ ] Authorization
 - [x] Rate limiting to prevent API abuse
 - [x] CORS policies for secure cross-origin requests
 - [x] Response caching and compression
 - [x] Logging with Serilog
 - [x] Health check endpoint
 - [x] [Middlewares](https://github.com/FullstackCodingGuy/dotnetapi-boilerplate/tree/main/src/Middlewares)
+- [ ] Entity Framework
+- [ ] Serilog
 - [ ] Vault Integration
 - [ ] MQ Integration
 - [ ] Application Resiliency
-- [ ] Performance Metrics
-- [ ] Dockerization
-- [ ] CloudFormation - Stack Deployment Template
-- [ ] Github Action
+- [ ] Performance
+  - [ ] Response Compression
+  - [ ] Response Caching 
+  - [ ] Metrics
+- [ ] Deployment
+  - [ ] Docker
+  - [ ] Podman
+  - [ ] CloudFormation
+- [ ] CI
+  - [ ] Github Action
 
 ## Getting Started
 
