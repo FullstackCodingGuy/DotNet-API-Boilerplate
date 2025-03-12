@@ -2,13 +2,6 @@
 FROM mcr.microsoft.com/dotnet/sdk:9.0 AS build
 WORKDIR /app
 
-# Expose the port the application runs on
-# EXPOSE 8080
-# EXPOSE 8000
-# ENV ASPNETCORE_URLS=https://+;http://+
-# ENV ASPNETCORE_HTTPS_PORTS=8001
-# ENV ASPNETCORE_HTTP_PORTS=8000
-
 ARG BUILD_CONFIGURATION=Release
 
 # Copy the project files and restore dependencies

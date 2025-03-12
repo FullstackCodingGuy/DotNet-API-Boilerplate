@@ -76,6 +76,20 @@ dotnet dev-certs https --trust
 
 ```
 
+Running with Docker
+
+```
+// To build the image
+docker-compose build
+
+// To run the container
+docker-compose up
+
+// To kill container
+docker-compose down
+
+```
+
 2. The application will be available at `http://localhost:8000` and `https://localhost:8001` (or the configured URL).
 
 ### Health Check Endpoint
