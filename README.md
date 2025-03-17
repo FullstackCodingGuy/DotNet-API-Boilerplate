@@ -4,6 +4,8 @@
 
 This project is a boilerplate for building .NET API applications with various features such as authentication, rate limiting, CORS, and logging using Serilog.
 
+[![.NET](https://github.com/FullstackCodingGuy/DotNet-API-Boilerplate/actions/workflows/dotnet-build.yml/badge.svg)](https://github.com/FullstackCodingGuy/DotNet-API-Boilerplate/actions/workflows/dotnet-build.yml)
+
 ## Features
 
 - [ ] [Vertical Slicing Architecture](https://github.com/FullstackCodingGuy/Developer-Fundamentals/wiki/Architecture-%E2%80%90-Vertical-Slicing-Architecture)
