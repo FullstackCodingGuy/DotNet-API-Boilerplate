@@ -40,7 +40,7 @@ This project is a boilerplate for building .NET API applications with various fe
 
 ### Prerequisites
 
-- [.NET 6 SDK](https://dotnet.microsoft.com/download/dotnet/6.0)
+- [.NET 9 SDK](https://dotnet.microsoft.com/download/dotnet/9.0)
 - [Keycloak](https://www.keycloak.org/) for authentication
 
 ### Installation
